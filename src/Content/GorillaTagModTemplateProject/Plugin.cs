@@ -55,4 +55,32 @@ namespace GorillaTagModTemplateProject
 
 		}
 	}
+	 public class MyModView : ComputerView
+	    {
+	        // This is called when your view is opened
+	        public override void OnShow()
+	        {
+	            base.OnShow();
+	            // Changing the Text property will fire a PropertyChanged event
+	            // which lets the computer know the text has changed and updates it
+	            Text = "View example from Josiah's custom <color=red>Gorilla Tag Mod Template!</color>";
+	        }
+	
+	        // You can do something on keypresses by overriding "OnKeyPressed"
+	        // It gets an EKeyboardKey passed as a parameter which wraps the old character string
+	        public override void OnKeyPressed(EKeyboardKey key)
+	        {
+	            switch (key)
+	            {
+	                case EKeyboardKey.Back:
+	                    // "ReturnToMainMenu" will switch to the main menu again
+	                    ReturnToMainMenu();
+	                    break;
+	                case EKeyboardKey.Option1:
+	                    // If you want to switch to another view you can do it like this
+	                    ShowView<MyOtherModView>();
+	                    break;
+	            }
+	        }
+	    }
 }
